@@ -1,4 +1,14 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## BackGround
+
+Why you should practice Code Typing?
+- Low Productivity!
+- fixing typo costs alot
+- your speed of typing should follow your speed of thinking
+
+- [reference1-(홍정모교수님(video): 올바른 타자연습의 중요성)](https://youtu.be/vrQsH7xuq6U?t=60)
+- [reference2-(Blog: benefit-of-typing)](https://www.skillsyouneed.com/rhubarb/benefits-of-typing.html)
+- [reference3-(TechLead(video): importance of typing)](https://youtu.be/sw_wIKdJoNI?t=420)
+
 
 ## Getting Started
 
