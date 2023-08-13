@@ -11,5 +11,5 @@ export default function Character({ character, userInputCharacter }: CharacterPr
     textColorClass = character === userInputCharacter ? 'text-blue-500' : 'text-red-500';
   }
 
-  return <div className={textColorClass}>{character}</div>;
+  return <span className={textColorClass}>{character}</span>;
 }

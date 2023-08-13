@@ -12,6 +12,12 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+export const DefaultCase: Story = {
+  args: {
+    character: 'A',
+  },
+};
+
 export const CorrectCase: Story = {
   args: {
     character: 'A',
@@ -19,16 +25,17 @@ export const CorrectCase: Story = {
   },
 };
 
-export const DifferenctCase: Story = {
+export const IncorrectCase: Story = {
   args: {
     character: 'A',
     userInputCharacter: 'B',
   },
 };
 
-export const DefaultCase: Story = {
+export const UndefinedCase: Story = {
   args: {
     character: 'A',
+    userInputCharacter: undefined,
   },
 };
 
