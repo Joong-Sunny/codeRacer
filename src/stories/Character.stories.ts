@@ -1,21 +1,34 @@
-import {Meta, StoryObj} from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 // import Character  from "../components/Character";
-import Character from "@/components/Character";
+import Character from '@/components/Character';
 // import {within, waitFor, userEvent} from "@storybook/testing-library";
 // import {expect} from "@storybook/jest";
 
 const meta = {
-  title: "Components/Character",
+  title: 'Components/Character',
   component: Character,
 } as Meta;
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-
-export const CheckAfterToastClosed: Story = {
+export const CorrectCase: Story = {
   args: {
-    character: "A",
+    character: 'A',
+    userInputCharacter: 'A',
+  },
+};
+
+export const DifferenctCase: Story = {
+  args: {
+    character: 'A',
+    userInputCharacter: 'B',
+  },
+};
+
+export const DefaultCase: Story = {
+  args: {
+    character: 'A',
   },
 };
 
