@@ -21,8 +21,17 @@ export default function Home() {
   };
 
   return (
-    <div ref={containerRef} onKeyDown={handleKeyDown} tabIndex={0} style={{ outline: 'none' }}>
-      <Sentence text={text} userInputText={userInputText} />
+    <div className="pt-20 px-10">
+      <h1 className="text-5xl font-semibold text-center mt-10 "> Typing Test</h1>
+      <div
+        className="bg-blue-50 px-20"
+        ref={containerRef}
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
+        style={{ outline: 'none' }}
+      >
+        <Sentence text={text} userInputText={userInputText} />
+      </div>
     </div>
   );
 }
