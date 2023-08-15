@@ -4,7 +4,15 @@ import Sentence from '@components/Sentence';
 import { useState, useRef, useEffect } from 'react';
 
 export default function Home() {
-  const text = 'const [value, setValue] = useState(defaultValue);';
+  const text = `
+const [value, setValue] = useState(defaultValue);
+const [isDrawing, setIsDrawing] = useState(true);
+
+return (
+<span> Look at this!</span>
+)
+`;
+
   const [userInputText, setUserInputText] = useState('');
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -15,6 +23,8 @@ export default function Home() {
   const handleKeyDown = (event: any) => {
     if (event.key === 'Backspace') {
       setUserInputText(prev => prev.slice(0, -1));
+    } else if (event.key === 'Enter') {
+      setUserInputText(prev => prev + '\n');
     } else if (event.key.length === 1 && userInputText.length < text.length) {
       setUserInputText(prev => prev + event.key);
     }
