@@ -1,4 +1,5 @@
 'use client';
+import { memo } from 'react';
 
 interface CharacterProps {
   character: string;
@@ -13,3 +14,5 @@ export default function Character({ character, userInputCharacter }: CharacterPr
 
   return <span className={textColorClass}>{character}</span>;
 }
+
+export default memo(Character);
