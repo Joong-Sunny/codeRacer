@@ -1,47 +1,14 @@
-'use client';
-
-import Sentence from '@components/Sentence';
-import { useState, useRef, useEffect } from 'react';
+import TestCode from '@/app/test-code';
+import testTexts from '@/utils/testTexts';
 
 export default function Home() {
-  const text = `
-const [value, setValue] = useState(defaultValue);
-const [isDrawing, setIsDrawing] = useState(true);
-
-return (
-<span> Look at this!</span>
-)
-`;
-
-  const [userInputText, setUserInputText] = useState('');
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    containerRef.current?.focus();
-  }, []);
-
-  const handleKeyDown = (event: any) => {
-    if (event.key === 'Backspace') {
-      setUserInputText(prev => prev.slice(0, -1));
-    } else if (event.key === 'Enter') {
-      setUserInputText(prev => prev + '\n');
-    } else if (event.key.length === 1 && userInputText.length < text.length) {
-      setUserInputText(prev => prev + event.key);
-    }
-  };
+  const randomIndex = Math.floor(Math.random() * testTexts.length);
+  const testText = testTexts[randomIndex];
 
   return (
     <div className="pt-20 px-10">
       <h1 className="text-5xl font-semibold text-center mt-10 "> Typing Test</h1>
-      <div
-        className="bg-blue-50 px-20"
-        ref={containerRef}
-        onKeyDown={handleKeyDown}
-        tabIndex={0}
-        style={{ outline: 'none' }}
-      >
-        <Sentence text={text} userInputText={userInputText} />
-      </div>
+      <TestCode testText={testText} />
     </div>
   );
 }

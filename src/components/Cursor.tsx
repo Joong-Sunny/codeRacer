@@ -5,7 +5,7 @@ export default function Cursor({ position }: { position: { top: number; left: nu
       style={{
         position: 'absolute',
         top: position.top,
-        left: position.left,
+        left: position.left - 1,
       }}
     >
       |
