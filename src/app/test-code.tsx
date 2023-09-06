@@ -28,6 +28,10 @@ export default function TestCode({ testText }: { testText: string }) {
     if (isTimeUp) {
       return;
     }
+    if (event.key === ' ') {
+      event.preventDefault();
+    }
+
     if (event.key === 'Backspace') {
       setUserInputText(prev => prev.slice(0, -1));
     } else if (event.key === 'Enter') {
@@ -44,7 +48,7 @@ export default function TestCode({ testText }: { testText: string }) {
         <h3 className="text-6xl text-orange-400">{score}</h3>
       </div>
       <div
-        className="bg-blue-50 px-20"
+        className="bg-blue-50 px-20 max-h-[20vh] overflow-y-scroll"
         ref={containerRef}
         onKeyDown={handleKeyDown}
         tabIndex={0}
