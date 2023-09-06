@@ -1,7 +1,7 @@
 'use client';
 
 import Sentence from '@components/Sentence';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import ActivatedCharacter from '@components/ActivatedCharacter';
 import Image from 'next/image';
 import typing from '../../public/typing.png';
@@ -10,12 +10,11 @@ import useTimer from '@hooks/use-timer';
 export default function TestCode({ testText }: { testText: string }) {
   const [userInputText, setUserInputText] = useState('');
   const containerRef = useRef<HTMLDivElement>(null);
+  const onTimeUp = () => console.log("Time's up!");
   const INITIAL_TIME_LIMIT = 30;
   const { timeLeft, isTimeUp } = useTimer({
     initialTime: INITIAL_TIME_LIMIT,
-    onTimeUp: () => {
-      console.log("Time's up!");
-    },
+    onTimeUp: useCallback(onTimeUp, []),
   });
 
   // comparing with 0 (score should be bigger than 0)
