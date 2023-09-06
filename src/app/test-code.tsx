@@ -5,16 +5,30 @@ import { useState, useRef, useEffect } from 'react';
 import ActivatedCharacter from '@components/ActivatedCharacter';
 import Image from 'next/image';
 import typing from '../../public/typing.png';
+import useTimer from '@hooks/use-timer';
 
 export default function TestCode({ testText }: { testText: string }) {
   const [userInputText, setUserInputText] = useState('');
   const containerRef = useRef<HTMLDivElement>(null);
+  const INITIAL_TIME_LIMIT = 30;
+  const { timeLeft, isTimeUp } = useTimer({
+    initialTime: INITIAL_TIME_LIMIT,
+    onTimeUp: () => {
+      console.log("Time's up!");
+    },
+  });
+
+  // comparing with 0 (score should be bigger than 0)
+  const score = Math.max(0, Math.round((userInputText.length / (INITIAL_TIME_LIMIT - timeLeft)) * 60));
 
   useEffect(() => {
     containerRef.current?.focus();
   }, []);
 
   const handleKeyDown = (event: any) => {
+    if (isTimeUp) {
+      return;
+    }
     if (event.key === 'Backspace') {
       setUserInputText(prev => prev.slice(0, -1));
     } else if (event.key === 'Enter') {
@@ -26,6 +40,10 @@ export default function TestCode({ testText }: { testText: string }) {
 
   return (
     <>
+      <div className="flex justify-between">
+        <h3 className="text-6xl text-orange-400">{timeLeft}</h3>
+        <h3 className="text-6xl text-orange-400">{score}</h3>
+      </div>
       <div
         className="bg-blue-50 px-20"
         ref={containerRef}
