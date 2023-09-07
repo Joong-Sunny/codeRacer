@@ -48,7 +48,7 @@ export default function TestCode({ testText }: { testText: string }) {
         <h3 className="text-6xl text-orange-400">{score}</h3>
       </div>
       <div
-        className="bg-blue-50 px-20 max-h-[20vh] overflow-y-scroll"
+        className="bg-blue-50 px-20"
         ref={containerRef}
         onKeyDown={handleKeyDown}
         tabIndex={0}

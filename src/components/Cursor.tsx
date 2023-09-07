@@ -1,14 +1,7 @@
-export default function Cursor({ position }: { position: { top: number; left: number } }) {
-  return (
-    <span
-      className="cursor-character animate-blink"
-      style={{
-        position: 'absolute',
-        top: position.top,
-        left: position.left - 1,
-      }}
-    >
-      |
-    </span>
-  );
+export default function Cursor({ isActive }: { isActive: boolean }) {
+  if (!isActive) {
+    return null;
+  }
+
+  return <span className="cursor-character animate-blink absolute left-[-3px]">|</span>;
 }

@@ -4,7 +4,6 @@ import Character from '@components/Character';
 import useCursor from '@hooks/use-cursor';
 import Cursor from '@components/Cursor';
 import { useRef } from 'react';
-import ReactDOM from 'react-dom';
 
 interface SentenceProps {
   text: string;
@@ -17,7 +16,7 @@ export default function Sentence({ text, userInputText }: SentenceProps) {
 
   return (
     <>
-      <div className="bg-pink-100" ref={containerRef}>
+      <div className="bg-pink-100 max-h-[20vh] overflow-y-scroll" ref={containerRef}>
         {text.split('\n').map((line, lineIndex) => (
           <span key={lineIndex}>
             {line.split('').map((char, charIndex) => {
@@ -26,6 +25,7 @@ export default function Sentence({ text, userInputText }: SentenceProps) {
 
               return (
                 <Character
+                  isActive={overallIndex === userInputText.length}
                   key={charIndex}
                   character={char}
                   userInputCharacter={userInputCharacter}
@@ -37,7 +37,7 @@ export default function Sentence({ text, userInputText }: SentenceProps) {
           </span>
         ))}
       </div>
-      {cursorPosition && ReactDOM.createPortal(<Cursor position={cursorPosition} />, document.body)}
+      {/*{cursorPosition && ReactDOM.createPortal(<Cursor position={cursorPosition} />, document.body)}*/}
     </>
   );
 }
