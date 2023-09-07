@@ -1,8 +1,7 @@
 'use client';
 
 import Character from '@components/Character';
-import useCursor from '@hooks/use-cursor';
-import Cursor from '@components/Cursor';
+import useAutoScroll from '@hooks/use-auto-scroll'; // 추가
 import { useRef } from 'react';
 
 interface SentenceProps {
@@ -12,7 +11,7 @@ interface SentenceProps {
 
 export default function Sentence({ text, userInputText }: SentenceProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const cursorPosition = useCursor(containerRef, userInputText.length);
+  useAutoScroll(containerRef, userInputText.length + 6); // 추가
 
   return (
     <>
@@ -30,6 +29,7 @@ export default function Sentence({ text, userInputText }: SentenceProps) {
                   character={char}
                   userInputCharacter={userInputCharacter}
                   overAllIndex={overallIndex}
+                  data-index={overallIndex} // 추가
                 />
               );
             })}
