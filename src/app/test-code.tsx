@@ -6,11 +6,16 @@ import ActivatedCharacter from '@components/ActivatedCharacter';
 import Image from 'next/image';
 import typing from '../../public/typing.png';
 import useTimer from '@hooks/use-timer';
+import Modal from '@components/Modal';
 
 export default function TestCode({ testText }: { testText: string }) {
   const [userInputText, setUserInputText] = useState('');
   const containerRef = useRef<HTMLDivElement>(null);
-  const onTimeUp = () => console.log("Time's up!");
+  const modalRef = useRef<HTMLDivElement>(null);
+  const onTimeUp = () => {
+    modalRef.current?.openModal();
+    console.log("Time's up!");
+  };
   const INITIAL_TIME_LIMIT = 30;
   const { timeLeft, isTimeUp } = useTimer({
     initialTime: INITIAL_TIME_LIMIT,
@@ -65,6 +70,9 @@ export default function TestCode({ testText }: { testText: string }) {
       <div className="flex justify-center">
         <Image src={typing} alt="typingKeyboard" width={400} />
       </div>
+      <Modal ref={modalRef}>
+        <span>say hi</span>
+      </Modal>
     </>
   );
 }
